@@ -1,0 +1,22 @@
+<form #regForm="ngForm" (ngSubmit)="addItem(regForm)">
+    <div class="container">
+        
+        <div class="brand-logo"></div>
+        <div class="brand-title">ADMIN DESK</div>
+        <div class="inputs">
+          <label>SONG NAME </label>
+          <input type="text" placeholder="Song Name" name="song name" [(ngModel)]="sad.name"/>
+          <label>FILE</label>
+          <input type="file" placeholder="File" name="file" (change)="uploadSong($event)">
+          <img [src]="mysong" height="111px" width="111px">
+          <!-- <label>ITEM PRICE</label>
+          <input type="number" placeholder="Item Price" name="itemprice" [(ngModel)]="item.itemPrice" /> -->
+    
+          <button type="submit">ADD</button>
+        </div>
+        <button routerLink="/home">Back</button>
+        
+       
+      </div>
+      
+    </form>

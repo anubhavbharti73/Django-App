@@ -1,0 +1,22 @@
+
+<form #regForm="ngForm" (ngSubmit)="loginValidate(regForm)"> 
+
+    <table align="center"> 
+    
+        <tr > 
+        <td align="left" class="form-label"> Username :</td> 
+        <td align="left"><input type="text"  name="username"  [(ngModel)]="userAuth.username" required> </td>
+        </tr>
+        <br>
+        <tr> 
+            <td align="right" class="form-label" > Password :  </td> 
+            <td align="left"><input type="password"  name="password"  [(ngModel)]="userAuth.password"> </td>
+            </tr>
+        
+    <br>
+    <tr><input class="btn btn-outline-light btn-lg px-5" type="submit" value="Login" ></tr>
+</table>
+    <p style="color: blue;" routerLink="/register">Register</p>
+</form>
+
+
