@@ -30,6 +30,7 @@ export class ProductsComponent implements OnInit {
   chilllist=0
   englishlist=0
   mylistlist=0
+  about=0
 
   constructor(private productSer: ProductService, private router:Router, private favSer: FavoriteService) { }
 
@@ -52,6 +53,7 @@ export class ProductsComponent implements OnInit {
     this.chilllist=0
     this.englishlist=0
     this.mylistlist=0
+    this.about=0
 
     this.productSer.getAllSadSong().subscribe(
       data=>{
@@ -72,6 +74,7 @@ export class ProductsComponent implements OnInit {
     this.chilllist=1
     this.englishlist=0
     this.mylistlist=0
+    this.about=0
 
     this.productSer.getAllChillSong().subscribe(
       data=>{
@@ -91,6 +94,8 @@ export class ProductsComponent implements OnInit {
     this.chilllist=0
     this.englishlist=1
     this.mylistlist=0
+    this.about=0
+
     this.productSer.getAllEnglishSong().subscribe(
       data=>{
         console.log(data)
@@ -111,6 +116,7 @@ export class ProductsComponent implements OnInit {
     this.chilllist=0
     this.englishlist=0
     this.mylistlist=1
+    this.about=0
 
     this.myfav.username=this.user.username
     this.favSer.getAllMyFav(this.myfav).subscribe(
@@ -220,7 +226,15 @@ export class ProductsComponent implements OnInit {
     )
 
   }
+
   
+  getAbout(){
+    this.sadlist=0
+    this.chilllist=0
+    this.englishlist=0
+    this.mylistlist=0
+    this.about=1
+  }
 
   }
 

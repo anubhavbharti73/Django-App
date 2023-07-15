@@ -14,6 +14,7 @@
      <li><a class="dropdown-item" (click)="delAcount()">Delete Account</a></li>
      {{username}}
    </ul>
+   <button class="btn btn-primary" (click)="getAbout()">About</button>
 
  </div> 
  <br>
@@ -65,6 +66,38 @@
   </div>
 <div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
 </div>
+
+<!-- FOR ABOUT DEVLOPER -->
+<div style="background-color: white ; border-radius: 1cm;  ">
+   
+   <div *ngIf="about">
+    
+    <p>Welcome to my website! I'm <b><em>Anubhav</em></b>, the dedicated developer behind its creation. 
+      With a passion for web development and a strong technical skill set, I have poured my expertise 
+      into designing and building this platform from scratch.
+<br>
+      Using a combination of front-end and back-end technologies, I have carefully crafted an engaging 
+      and user-friendly interface. Leveraging my proficiency in HTML, CSS, and Angular TypeScript, I have 
+      implemented dynamic elements and responsive design to ensure a seamless experience 
+      across various devices.
+<br>
+      On the back end, I have utilized programming languages such as Python along with frameworks 
+      of Django, to develop the website's functionality. Additionally, I have integrated databases 
+      such as MySQLite to store and retrieve data efficiently.
+<br>
+      I take great pride in my work and believe that this website reflects my commitment to delivering
+       high-quality solutions. I am constantly exploring new technologies and staying up-to-date with
+       industry trends to enhance the user experience and provide innovative features.
+<br>
+      Thank you for visiting my website. I hope you find it informative, visually appealing, and 
+      enjoyable to navigate. If you have any feedback or questions, please feel free to reach out at <br>
+    <a target="_blank" href="https://github.com/anubhavbharti73">GitHub</a><br>
+    <a target="_blank" href="https://www.linkedin.com/in/anubhav-bharti-5002541ba">Linkdin</a></p>
+
+     <div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
+  </div>
+</div>
+
   
   
  
