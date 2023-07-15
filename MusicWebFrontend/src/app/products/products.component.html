@@ -63,7 +63,7 @@
  <div *ngIf="mylistlist">
     <h1> {{my.name}} </h1>
     <img [src]="my.file" height ="80px" width="80px" />
-    <button id="btnh1" class="btn" (click)="deleteFromMyFav(my)" value="Add Fav"><i class="fa-solid fa-trash"></i></button>
+    <button id="btnh1" class="btn" (click)="deleteFromMyFav(my.ref)" value="Add Fav"><i class="fa-solid fa-trash"></i></button>
   </div>
 <div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
 </div>

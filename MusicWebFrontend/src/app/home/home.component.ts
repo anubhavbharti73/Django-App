@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     {
 
       
-this.userService.loginUser(this.userAuth).subscribe(
+      this.userService.loginUser(this.userAuth).subscribe(
 
   data=>{
     if(data==null)

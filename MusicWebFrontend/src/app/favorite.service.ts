@@ -25,4 +25,8 @@ export class FavoriteService {
     return this.http.post<MyFavList>(`http://localhost:6067/fav/`,myfav);
   }
 
+  deleteMyFav(myref:string){
+   return this.http.delete(`http://localhost:6067/favdel/${myref}`); 
+  }
+
 }

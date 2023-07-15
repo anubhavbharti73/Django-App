@@ -55,6 +55,7 @@ def loginFun(request):
     print(user)
     for intake in intakes:
         if (intake.username == username and intake.password == password) == 1:
+            print(type(user_serializer.data[0]))
             return JsonResponse(user_serializer.data[0], safe=False)
         else:
             return JsonResponse(null)

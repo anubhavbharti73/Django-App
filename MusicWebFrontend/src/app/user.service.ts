@@ -16,7 +16,7 @@ export class UserService {
 
   loginUser(userAuth:userAuth)
 {
-return  this.http.post<User>('http://127.0.0.1:8000/user/login/',userAuth);
+ return  this.http.post<User>('http://127.0.0.1:8000/user/login/',userAuth);
 }
 
 }

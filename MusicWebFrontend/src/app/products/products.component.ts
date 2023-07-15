@@ -115,16 +115,14 @@ export class ProductsComponent implements OnInit {
     this.myfav.username=this.user.username
     this.favSer.getAllMyFav(this.myfav).subscribe(
       data=>{
-        console.log(data)
-        let kc=this.myfav.file=data.username
-        console.log(kc)
+        let kc=JSON.stringify(data)
+        this.myFavlist=JSON.parse(kc)
         
       },
       error=>{
         console.log(error)
       }
     )
-
   }
 
   delAcount(){
@@ -209,7 +207,17 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  deleteFromMyFav(my:MyFavList){
+  deleteFromMyFav(my:string){
+
+    this.favSer.deleteMyFav(my).subscribe(
+      data=>{
+        console.log(data)
+        this.getMyFavourite()
+      },
+      error=>{
+        console.log(error)
+      }
+    )
 
   }
   

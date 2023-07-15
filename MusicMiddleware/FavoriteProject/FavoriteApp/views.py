@@ -9,12 +9,13 @@ from FavoriteApp.serializer import FavSerializer
 
 @csrf_exempt
 def getFavList(request, id=0):
-    if request.method == 'POST':
+    
         userdata= JSONParser().parse(request)
         username=userdata['username']
         favlists= Favorite.objects.all().filter(username=username)
         fav_serializer=FavSerializer(favlists, many=True)
-        return JsonResponse(fav_serializer.data , safe=False)
+        print(type(fav_serializer.data))
+        return JsonResponse(fav_serializer.data, safe=False)
 
   
 @csrf_exempt
