@@ -8,10 +8,26 @@ from FavoriteApp.serializer import FavSerializer
 # Create your views here.
 
 @csrf_exempt
-def getFavList(request):
+def getFavList(request, id=0):
+    if request.method == 'POST':
         userdata= JSONParser().parse(request)
         username=userdata['username']
-        favlist= Favorite.objects.all().filter(username=username)
-        fav_serializer=FavSerializer(favlist, many=True)
+        favlists= Favorite.objects.all().filter(username=username)
+        fav_serializer=FavSerializer(favlists, many=True)
+        return JsonResponse(fav_serializer.data , safe=False)
+
+  
+@csrf_exempt
+def saveToFav(request, id=0):
+    if request.method == 'POST':
+        fav_data=JSONParser().parse(request)
+        fav_serializer = FavSerializer(data=fav_data)
         if fav_serializer.is_valid():
-            return JsonResponse(fav_serializer.data , safe=False)
+             fav_serializer.save()
+             return JsonResponse("Fav Saved", safe=False)
+        return JsonResponse("Can not Save Fav", safe=False) 
+    elif request.method == "DELETE":
+         fav =Favorite.objects.get(ref=id)
+         fav.delete()
+         return JsonResponse("Deleted", safe=False)
+           

@@ -5,7 +5,8 @@ from django.conf import settings
 
 urlpatterns=[
     re_path(r'^user/$', views.userAPI),
-    re_path(r'^user/([a-z]+[0-9]+)$', views.userAPI),
+    re_path(r'^user/([a-z]+)$', views.userAPI),
+    re_path(r'^user/([a-z]+[0-9]+)$' , views.userAPI),
 
     re_path(r"^savefile$", views.saveFile),
 

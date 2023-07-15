@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 import { SadSong } from '../sadsong.model';
 import { ChillSong } from '../chillsong.model';
 import { EnglishSong } from '../englishsong.model';
+import { FavoriteService } from '../favorite.service';
+import { FavforSad } from '../sadSongToFav.model';
+import { FavforChill } from '../chillSongToFav.model';
+import { FavforEnglish } from '../englishSongToFav.model';
+import { MyFavList } from '../myFavList.model';
 
 @Component({
   selector: 'app-products',
@@ -18,9 +23,15 @@ export class ProductsComponent implements OnInit {
   sadsong = new SadSong();
   chillsong = new ChillSong();
   englishsong =new EnglishSong();
+  myfav = new MyFavList();
 
 
-  constructor(private productSer: ProductService, private router:Router) { }
+  sadlist=0
+  chilllist=0
+  englishlist=0
+  mylistlist=0
+
+  constructor(private productSer: ProductService, private router:Router, private favSer: FavoriteService) { }
 
   ngOnInit(): void {
 
@@ -35,14 +46,17 @@ export class ProductsComponent implements OnInit {
   }
 
   sadsongs:SadSong[]=[];
-
   getSadSongs(){
+
+    this.sadlist=1
+    this.chilllist=0
+    this.englishlist=0
+    this.mylistlist=0
+
     this.productSer.getAllSadSong().subscribe(
       data=>{
         console.log(data)
-
         this.sadsongs=data
-
       },
       error=>{
         console.log(error)
@@ -51,10 +65,18 @@ export class ProductsComponent implements OnInit {
     )
   }
 
+  chillsongs:ChillSong[]=[]
   getChillSongs(){
+
+    this.sadlist=0
+    this.chilllist=1
+    this.englishlist=0
+    this.mylistlist=0
+
     this.productSer.getAllChillSong().subscribe(
       data=>{
         console.log(data)
+        this.chillsongs=data
       },
       error=>{
         console.log(error)
@@ -63,11 +85,16 @@ export class ProductsComponent implements OnInit {
     )
   }
 
+  englishsongs:EnglishSong[]=[]
   getEnglishSongs(){
-
+    this.sadlist=0
+    this.chilllist=0
+    this.englishlist=1
+    this.mylistlist=0
     this.productSer.getAllEnglishSong().subscribe(
       data=>{
         console.log(data)
+        this.englishsongs=data
       },
       error=>{
         console.log(error)
@@ -77,7 +104,26 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  myFavlist:MyFavList[]=[]
   getMyFavourite(){
+
+    this.sadlist=0
+    this.chilllist=0
+    this.englishlist=0
+    this.mylistlist=1
+
+    this.myfav.username=this.user.username
+    this.favSer.getAllMyFav(this.myfav).subscribe(
+      data=>{
+        console.log(data)
+        let kc=this.myfav.file=data.username
+        console.log(kc)
+        
+      },
+      error=>{
+        console.log(error)
+      }
+    )
 
   }
 
@@ -94,6 +140,77 @@ export class ProductsComponent implements OnInit {
       }
     )
     
+  }
+
+  favforsad = new FavforSad()
+  addToFavforSad(sad:SadSong){
+    
+    this.favforsad.username=this.user.username
+    this.favforsad.name=sad.name
+    this.favforsad.file=sad.sadsong
+    console.log(this.favforsad)
+
+    this.favSer.addToFavforSad(this.favforsad).subscribe(
+      data=>{
+        alert("Added")
+        console.log(data)
+      },
+      error=>{
+        console.log(error)
+      }
+
+    )
+
+  }
+
+
+  favforchill = new FavforChill();
+  addToFavforChill(chill:ChillSong){
+
+    this.favforchill.username=this.user.username
+    this.favforchill.name=chill.name
+    this.favforchill.file=chill.chillsong
+    console.log(this.favforchill)
+
+    this.favSer.addToFavforChill(this.favforchill).subscribe(
+      data=>{
+        alert("Added")
+        console.log(data)
+      },
+      error=>{
+        console.log(error)
+      }
+
+    )
+
+
+  }
+
+
+  favforenglish = new FavforEnglish()
+  addToFavforEnglish(eng:EnglishSong){
+
+    this.favforenglish.username=this.user.username
+    this.favforenglish.name=eng.name
+    this.favforenglish.file=eng.englishsong
+    console.log(this.favforenglish)
+
+    this.favSer.addToFavforChill(this.favforenglish).subscribe(
+      data=>{
+        alert("Added")
+        console.log(data)
+      },
+      error=>{
+        console.log(error)
+      }
+
+    )
+
+  }
+
+
+  deleteFromMyFav(my:MyFavList){
+
   }
   
 

@@ -20,31 +20,53 @@
  </div> 
  <br>
  
- 
+ <!-- FOR SAD SONG -->
    <div style="background-color: white ; border-radius: 1cm;  ">
  <div  id="home" *ngFor="let sad of sadsongs">  
-  <!-- <div *ngIf="change"> -->
+  <div *ngIf="sadlist">
  <h1> {{sad.name}} </h1>
  <img [src]="sad.sadsong" height ="80px" width="80px" />
- <!-- <button id="btnh1" class="btn" (click)="addToFav(sad)" value="Add Fav"><i class="fa-solid fa-heart"></i></button> -->
+ <button id="btnh1" class="btn" (click)="addToFavforSad(sad)" value="Add Fav"><i class="fa-solid fa-heart"></i></button>
  </div>
  <div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
  </div>
  
- </div> 
- <!-- <div style="background-color: black ; text-align: center; height: .2cm; "></div>
-   <div style="background-color: white ;  ">
+
+ <!-- FOR CHILL SONG -->
+
+ <div style="background-color: white ; border-radius: 1cm;  ">
+    <div  id="home" *ngFor="let chill of chillsongs">  
+   <div *ngIf="chilllist">
+      <h1> {{chill.name}} </h1>
+      <img [src]="chill.chillsong" height ="80px" width="80px" />
+      <button id="btnh1" class="btn" (click)="addToFavforChill(chill)" value="Add Fav"><i class="fa-solid fa-heart"></i></button>
+    </div>
+  <div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
+  </div>
+
+  <!-- FOR ENGLISH SONG -->
+
+ <div style="background-color: white ; border-radius: 1cm;  ">
+  <div  id="home" *ngFor="let eng of englishsongs">  
+ <div *ngIf="englishlist">
+    <h1> {{eng.name}} </h1>
+    <img [src]="eng.englishsong" height ="80px" width="80px" />
+    <button id="btnh1" class="btn" (click)="addToFavforEnglish(eng)" value="Add Fav"><i class="fa-solid fa-heart"></i></button>
+  </div>
+<div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
+</div>
+  
+ <!-- FOR MYLIST SONG -->
+
+ <div style="background-color: white ; border-radius: 1cm;  ">
+  <div  id="home" *ngFor="let my of myFavlist">  
+ <div *ngIf="mylistlist">
+    <h1> {{my.name}} </h1>
+    <img [src]="my.file" height ="80px" width="80px" />
+    <button id="btnh1" class="btn" (click)="deleteFromMyFav(my)" value="Add Fav"><i class="fa-solid fa-trash"></i></button>
+  </div>
+<div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
+</div>
+  
+  
  
- <div *ngFor="let fav of favs">
-   <div *ngIf="changeFav">
-   <h1> {{fav.title}} </h1>
- <h3> {{fav.author}}</h3>
- <p><img class="pic" [src]="fav.urlToImg" width="200px"> </p>
- <p> {{fav.discription}}</p>
- <p> <a [href]="fav.url" target="_blank"> Read more... </a> </p>
- <button id="btnh2" class="btndel" (click)="deleteFav(fav)"><i class="fa-solid fa-trash"></i></button>
- <div style="background-color: black ; text-align: center; height: .2cm; ">  </div>
- 
- </div>
- </div>
-  -->

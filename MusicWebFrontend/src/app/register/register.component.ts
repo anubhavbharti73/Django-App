@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     this.userSer.registerUser(this.user).subscribe(
       data=>{
         console.log(data)
-        alert("User Registered")
+        alert(data)
       },
       error=>{
         console.log(error)

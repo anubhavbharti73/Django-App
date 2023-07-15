@@ -23,7 +23,7 @@ def userAPI(request, id=0):
         if user_serializer.is_valid():
             user_serializer.save()
             return JsonResponse("Added", safe=False)
-        return JsonResponse("Failed", safe=False)
+        return JsonResponse("Failed: User Already Exist", safe=False)
     elif request.method == 'PUT':
         user_data=JSONParser().parse(request)
         user=Users.objects.get(username=user_data['username'])
