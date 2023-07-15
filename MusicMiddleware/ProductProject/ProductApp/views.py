@@ -19,7 +19,7 @@ def sadSongAPI(request, id=0):
         if sad_serializer.is_valid():
             sad_serializer.save()
             return JsonResponse("Added sad song" , safe=False)
-        return JsonResponse("Failed to Add sad song" , safe= False)
+        return JsonResponse("Failed to Add Sad song\nAdd Photo or Name" , safe= False)
     
 @csrf_exempt
 def chillSongAPI(request, id=0):
@@ -33,7 +33,7 @@ def chillSongAPI(request, id=0):
         if chill_serializer.is_valid():
             chill_serializer.save()
             return JsonResponse("Added chill song" , safe=False)
-        return JsonResponse("Failed to Add chill song" , safe= False)
+        return JsonResponse("Failed to Add chill song \nAdd Photo or Name" , safe= False)
     
 @csrf_exempt
 def englishSongAPI(request, id=0):
@@ -50,4 +50,4 @@ def englishSongAPI(request, id=0):
         if english_serializer.is_valid():
             english_serializer.save()
             return JsonResponse("Added english song" , safe=False)
-        return JsonResponse("Failed to Add english song" , safe= False)
+        return JsonResponse("Failed to Add English song\nAdd Photo or Name" , safe= False)

@@ -1,4 +1,4 @@
-body {
+/* body {
     align-content: center;
     background-color: #000;
     display: flex;
@@ -122,4 +122,14 @@ body {
   .submit:active {
     background-color: #06b;
   }
+   */
+
+
+   .gradient-custom {
+    /* fallback for old browsers */
+    background: #000000;
+    
   
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgb(7, 2, 73), rgb(32, 181, 192))
+    }

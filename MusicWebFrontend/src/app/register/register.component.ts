@@ -20,14 +20,6 @@ export class RegisterComponent implements OnInit {
   PhotoFilePath='';
 
   uploadPic(fileIn:any){
-    // var file =event.target.file[0];
-    // const formData:FormData=new FormData();
-    // formData.append('uploadFile',file, file.name);
-
-    // this.userSer.uploadPic(formData).subscribe((data:any)=>{
-    //   this.PhotoFileName=data.toString();
-    //   this.PhotoFilePath=this.userSer.PhotoUrl+this.PhotoFileName
-    // })
 
     let rdr = new FileReader();
     rdr.onload=(e:any)=>{
@@ -50,7 +42,6 @@ export class RegisterComponent implements OnInit {
 
     this.userSer.registerUser(this.user).subscribe(
       data=>{
-        console.log(data)
         alert(data)
       },
       error=>{

@@ -1,22 +1,52 @@
-<form #regForm="ngForm" (ngSubmit)="addItem(regForm)">
+
+<form #regForm="ngForm" (ngSubmit)="addSadSongToProduct(regForm)">
     <div class="container">
         
         <div class="brand-logo"></div>
         <div class="brand-title">ADMIN DESK</div>
         <div class="inputs">
+          <label>--------------------------SAD SONG--------------------------</label><br>
           <label>SONG NAME </label>
           <input type="text" placeholder="Song Name" name="song name" [(ngModel)]="sad.name"/>
           <label>FILE</label>
-          <input type="file" placeholder="File" name="file" (change)="uploadSong($event)">
-          <img [src]="mysong" height="111px" width="111px">
-          <!-- <label>ITEM PRICE</label>
-          <input type="number" placeholder="Item Price" name="itemprice" [(ngModel)]="item.itemPrice" /> -->
-    
+          <input type="file" placeholder="File" name="file" (change)="uploadSongforSad($event)">
+          <img [src]="mysongfilesad" height="111px" width="111px">
+          <br>
           <button type="submit">ADD</button>
         </div>
-        <button routerLink="/home">Back</button>
-        
-       
       </div>
-      
     </form>
+
+    <form #regForm="ngForm" (ngSubmit)="addChillSongToProduct(regForm)">
+      <div class="container">
+          
+          <div class="brand-logo"></div>
+          <div class="inputs">
+            <label>--------------------------CHILL SONG--------------------------</label><br>
+            <label>SONG NAME </label>
+            <input type="text" placeholder="Song Name" name="song name" [(ngModel)]="chill.name"/>
+            <label>FILE</label>
+            <input type="file" placeholder="File" name="file" (change)="uploadSongforChill($event)">
+            <img [src]="mysongfilechill" height="111px" width="111px">
+            <br>
+            <button type="submit">ADD</button>
+          </div>
+        </div>
+      </form>
+
+      <form #regForm="ngForm" (ngSubmit)="addEnglishSongToProduct(regForm)">
+        <div class="container">
+            
+            <div class="brand-logo"></div>
+            <div class="inputs">
+              <label>--------------------------ENGLISH SONG--------------------------</label><br>
+              <label>SONG NAME </label>
+              <input type="text" placeholder="Song Name" name="song name" [(ngModel)]="english.name"/>
+              <label>FILE</label>
+              <input type="file" placeholder="File" name="file" (change)="uploadSongforEnglish($event)">
+              <img [src]="mysongfileenglish" height="111px" width="111px">
+              <br>
+              <button type="submit">ADD</button>
+            </div>
+          </div>
+        </form>

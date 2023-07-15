@@ -3,7 +3,6 @@
     <div class="container p-3 -100"> 
  
  <div class="topnav">
-   <button class="btn bg-dark text-white "  (click)="getAllSongs()">All</button>
    <button class="btn btn-primary" (click)="getSadSongs()">Sad Songs</button>
    <button class="btn btn-primary" (click)="getChillSongs()">Chill Song</button>
    <button class="btn btn-primary" (click)="getEnglishSongs()">English Songs</button>
@@ -12,7 +11,6 @@
      <img class="btn btn-primary dropdown-toggle custom " type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false" [src]="user.file" height ="80px" width="80px" />
    <ul class="dropdown-menu" aria-labelledby="dropdown">
      <li><p> Welcome, <span>{{user.name}}</span> </li>
-     <li><a class="dropdown-item" routerLink="/update/{{username}}">Edit Profile</a></li>
      <li><a class="dropdown-item" (click)="delAcount()">Delete Account</a></li>
      {{username}}
    </ul>

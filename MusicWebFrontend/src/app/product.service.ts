@@ -16,6 +16,16 @@ export class ProductService {
     return this.http.post<SadSong>("http://localhost:7000/productsad/",sadsong);
   }
 
+  addChillSong(chillsong:ChillSong){
+
+    return this.http.post<SadSong>("http://localhost:7000/productchill/",chillsong);
+  }
+
+  addEnglishSong(englishsong:EnglishSong){
+
+    return this.http.post<SadSong>("http://localhost:7000/productenglish/",englishsong);
+  }
+
   getAllSadSong(){
     return this.http.get<SadSong[]>("http://127.0.0.1:7000/productsad/");
   }

@@ -16,13 +16,15 @@ export class AdminComponent implements OnInit {
   chill = new ChillSong();
   english = new EnglishSong();
 
-  mysong=""
+  mysongfilesad=""
+  mysongfilechill=""
+  mysongfileenglish=""
   constructor(private productSer: ProductService) { }
 
   ngOnInit(): void {
   }
 
-  uploadSong(fileIn:any){
+  uploadSongforSad(fileIn:any){
 
     let rdr = new FileReader();
     rdr.onload=(e:any)=>{
@@ -31,7 +33,7 @@ export class AdminComponent implements OnInit {
       file.src=e.target.result;
 
       file.onload=rs=>{
-        this.mysong=e.target.result;
+        this.mysongfilesad=e.target.result;
       }
 
     };
@@ -40,13 +42,78 @@ export class AdminComponent implements OnInit {
 
   }
 
-  addItem(regForm:NgForm){
+  uploadSongforChill(fileIn:any){
 
-    this.sad.sadsong=this.mysong;
+    let rdr = new FileReader();
+    rdr.onload=(e:any)=>{
+
+      let file = new Image();
+      file.src=e.target.result;
+
+      file.onload=rs=>{
+        this.mysongfilechill=e.target.result;
+      }
+
+    };
+
+    rdr.readAsDataURL(fileIn.target.files[0])
+
+  }
+
+  uploadSongforEnglish(fileIn:any){
+
+    let rdr = new FileReader();
+    rdr.onload=(e:any)=>{
+
+      let file = new Image();
+      file.src=e.target.result;
+
+      file.onload=rs=>{
+        this.mysongfileenglish=e.target.result;
+      }
+
+    };
+
+    rdr.readAsDataURL(fileIn.target.files[0])
+
+  }
+
+
+  addSadSongToProduct(regForm:NgForm){
+
+    this.sad.sadsong=this.mysongfilesad;
     this.productSer.addSadSong(this.sad).subscribe(
       data=>{
-        alert("Song Added")
-        console.log(data)
+        alert(data)   
+      },
+      error=>{
+        console.log(error)
+      }
+    );
+    
+  }
+
+
+  addChillSongToProduct(regForm:NgForm){
+
+    this.chill.chillsong=this.mysongfilechill;
+    this.productSer.addChillSong(this.chill).subscribe(
+      data=>{
+        alert(data) 
+      },
+      error=>{
+        console.log(error)
+      }
+    );
+    
+  }
+
+  addEnglishSongToProduct(regForm:NgForm){
+
+    this.english.englishsong=this.mysongfileenglish;
+    this.productSer.addEnglishSong(this.english).subscribe(
+      data=>{
+        alert(data) 
       },
       error=>{
         console.log(error)
