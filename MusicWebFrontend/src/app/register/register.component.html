@@ -8,22 +8,22 @@
               <h2 class="text-uppercase text-center mb-0">Create an account</h2>
 <form  #regForm="ngForm" (ngSubmit)="userRegister(regForm)"> 
 
-  <img [src]="PhotoFilePath" height="111px" width="111px">
+  <img [src]=PhotoFilePath height="111px" width="111px">
   <div class="form-outline mb-0">
     <label class="form-label" >UpLoad Pic</label>
-  <input id="form3Example1cg" class="form-control " type="file" name="pic" (change)="uploadPic($event)"> 
+  <input id="form3Example1cg1" class="form-control " type="file" name="pic" (change)="uploadPic($event)"> 
     </div>
   <div class="form-outline mb-0">
     <label class="form-label" >Name</label>
-  <input id="form3Example1cg" class="form-control " type="text" name="name" [(ngModel)]="user.name"> 
+  <input id="form3Example1cg2" class="form-control " type="text" name="name" [(ngModel)]="user.name"> 
     </div>
     <div class="form-outline mb-0">
       <label class="form-label" >Username<span class="text-danger" > *</span></label>
-  <input id="form3Example1cg" class="form-control form-control" type="text" name="username"  [(ngModel)]="user.username" required>
+  <input id="form3Example1cg3" class="form-control form-control" type="text" name="username"  [(ngModel)]="user.username" required>
     </div>
    <div class="form-outline mb-0">
     <label class="form-label" >Password<span class="text-danger" > *</span></label>
-  <input id="form3Example1cg" required class="form-control form-control" type="password" name="password"  [(ngModel)]="user.password">
+  <input id="form3Example1cg4" required class="form-control form-control" type="password" name="password"  [(ngModel)]="user.password">
      </div>
      
   <div class="d-flex justify-content-center">

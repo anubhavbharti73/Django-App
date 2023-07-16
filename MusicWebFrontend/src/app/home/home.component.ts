@@ -27,10 +27,8 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/admin'])
     }
 
-    if(regForm.valid)
+    else if(regForm.valid)
     {
-
-      
       this.userService.loginUser(this.userAuth).subscribe(
 
   data=>{
@@ -40,8 +38,6 @@ export class HomeComponent implements OnInit {
     }
     else{
       alert('Welcome ')
-      console.log(data);
-
       let user=new User();
       user=data;
       

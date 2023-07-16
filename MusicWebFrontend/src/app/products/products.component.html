@@ -8,14 +8,13 @@
    <button class="btn btn-primary" (click)="getEnglishSongs()">English Songs</button>
    <button class="btn btn-primary" (click)="getMyFavourite()">My List</button>
    <button class="btn bg-dark text-white"  routerLink="/home" >LogOut </button>
-     <img class="btn btn-primary dropdown-toggle custom " type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false" [src]="user.file" height ="80px" width="80px" />
+     <img class="btn btn-primary dropdown-toggle custom " type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false" [src]="mypicuploaded" height ="80px" width="80px" />
    <ul class="dropdown-menu" aria-labelledby="dropdown">
      <li><p> Welcome, <span>{{user.name}}</span> </li>
      <li><a class="dropdown-item" (click)="delAcount()">Delete Account</a></li>
      {{username}}
    </ul>
    <button class="btn btn-primary" (click)="getAbout()">About</button>
-
  </div> 
  <br>
  

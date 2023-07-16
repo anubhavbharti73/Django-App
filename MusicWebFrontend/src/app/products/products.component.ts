@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit {
   chillsong = new ChillSong();
   englishsong =new EnglishSong();
   myfav = new MyFavList();
+  mypicuploaded=''
 
 
   sadlist=0
@@ -39,12 +40,11 @@ export class ProductsComponent implements OnInit {
     let user= localStorage.getItem('user')+'';
     this.user=JSON.parse(user);
 
-  }
-
-
-  getAllSongs(){
+    let mypic= localStorage.getItem('mypic')+'';
+    this.mypicuploaded=JSON.parse(mypic);
 
   }
+
 
   sadsongs:SadSong[]=[];
   getSadSongs(){
@@ -57,7 +57,6 @@ export class ProductsComponent implements OnInit {
 
     this.productSer.getAllSadSong().subscribe(
       data=>{
-        console.log(data)
         this.sadsongs=data
       },
       error=>{
@@ -78,7 +77,6 @@ export class ProductsComponent implements OnInit {
 
     this.productSer.getAllChillSong().subscribe(
       data=>{
-        console.log(data)
         this.chillsongs=data
       },
       error=>{
@@ -98,7 +96,6 @@ export class ProductsComponent implements OnInit {
 
     this.productSer.getAllEnglishSong().subscribe(
       data=>{
-        console.log(data)
         this.englishsongs=data
       },
       error=>{
@@ -135,7 +132,7 @@ export class ProductsComponent implements OnInit {
 
     this.productSer.deleteAcc(this.user.username).subscribe(
       data=>{
-       
+        this.productSer.deletepicalso("media/"+this.user.file).subscribe()        
         alert("User Deleted")
         this.router.navigate(['/home'])
       },
@@ -157,7 +154,6 @@ export class ProductsComponent implements OnInit {
     this.favSer.addToFavforSad(this.favforsad).subscribe(
       data=>{
         alert("Added")
-        console.log(data)
       },
       error=>{
         console.log(error)
@@ -179,7 +175,6 @@ export class ProductsComponent implements OnInit {
     this.favSer.addToFavforChill(this.favforchill).subscribe(
       data=>{
         alert("Added")
-        console.log(data)
       },
       error=>{
         console.log(error)
@@ -202,7 +197,6 @@ export class ProductsComponent implements OnInit {
     this.favSer.addToFavforChill(this.favforenglish).subscribe(
       data=>{
         alert("Added")
-        console.log(data)
       },
       error=>{
         console.log(error)
@@ -217,7 +211,6 @@ export class ProductsComponent implements OnInit {
 
     this.favSer.deleteMyFav(my).subscribe(
       data=>{
-        console.log(data)
         this.getMyFavourite()
       },
       error=>{

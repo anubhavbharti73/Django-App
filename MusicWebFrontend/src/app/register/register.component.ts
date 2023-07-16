@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../user.model';
 import { Form, NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
@@ -11,35 +11,40 @@ import { UserService } from '../user.service';
 export class RegisterComponent implements OnInit {
 
   user =new User()
+  @Input()
+  PhotoFileName='';
+  PhotoFilePath='';
 
   constructor(private userSer:UserService) { }
 
   ngOnInit(): void {
+
   }
+ 
+  uploadPic(event:any){
 
-  PhotoFilePath='';
+    var file = event.target.files[0];
+    const formData:FormData = new FormData();
+    formData.append('uploadfile',file, file.name);
 
-  uploadPic(fileIn:any){
+    this.userSer.uploadPhototoStorage(formData).subscribe(
+      (data:any)=>{
+        this.PhotoFileName=data.toString();
+        this.PhotoFilePath= this.userSer.PhotoUrl+this.PhotoFileName;
 
-    let rdr = new FileReader();
-    rdr.onload=(e:any)=>{
-      let image = new Image();
-      image.src=e.target.result;
+        localStorage.setItem('mypic',JSON.stringify(this.PhotoFilePath));
 
-      image.onload=rs=>{
-        this.PhotoFilePath=e.target.result;
+      },
+      error=>{
+        console.log(error)
       }
-    };
-
-    rdr.readAsDataURL(fileIn.target.files[0])
-
+    )
+ 
   }  
 
   userRegister(regForm:NgForm){
 
-    this.user.file=this.PhotoFilePath
-    console.log(this.user);
-
+    this.user.file=this.PhotoFileName
     this.userSer.registerUser(this.user).subscribe(
       data=>{
         alert(data)

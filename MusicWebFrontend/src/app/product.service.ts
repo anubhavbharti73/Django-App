@@ -42,5 +42,9 @@ export class ProductService {
     return this.http.delete(`http://localhost:8000/user/${username}`);
   }
 
+  deletepicalso(path:string){
+    return this.http.post('http://localhost:8000/deletepicalso/',{data:path});
+    }
+
 
 }

@@ -12,4 +12,6 @@ urlpatterns=[
 
     re_path(r"^user/login/", views.loginFun),
 
+    re_path(r"^deletepicalso/", views.deletefile),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

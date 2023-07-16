@@ -5,7 +5,7 @@ from django.http.response import JsonResponse
 from UserApp.models import Users
 from UserApp.serializer import UserSerializer
 from django.core.files.storage import default_storage
-from django.contrib.auth import authenticate, login
+import os
 
 # Create your views here.
 
@@ -18,7 +18,6 @@ def userAPI(request, id=0):
     elif request.method == 'POST':
         user_data = JSONParser().parse(request)
         user_serializer = UserSerializer(data=user_data)
-        # print(user_data)
         print(user_serializer)
         if user_serializer.is_valid():
             user_serializer.save()
@@ -43,6 +42,19 @@ def saveFile(request):
     file_name = default_storage.save(file.name, file)
     return JsonResponse(file_name, safe=False)
 
+
+def delete_file(path):
+    # Deletes file from filesystem.
+    if os.path.isfile(path):
+        os.remove(path)
+
+@csrf_exempt
+def deletefile(request):
+    incomming_path=JSONParser().parse(request)
+    file_path= incomming_path['data']
+    delete_file(file_path)
+    return JsonResponse("deleted", safe=False)
+
 @csrf_exempt
 def loginFun(request):
     userdata = JSONParser().parse(request)
@@ -52,10 +64,8 @@ def loginFun(request):
     user= Users.objects.all().filter(username=username)
     user_serializer= UserSerializer(user , many=True)
     null={}
-    print(user)
     for intake in intakes:
         if (intake.username == username and intake.password == password) == 1:
-            print(type(user_serializer.data[0]))
             return JsonResponse(user_serializer.data[0], safe=False)
         else:
             return JsonResponse(null)
